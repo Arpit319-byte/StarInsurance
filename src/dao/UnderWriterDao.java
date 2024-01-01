@@ -8,11 +8,12 @@ import java.sql.*;
 
 public class UnderWriterDao {
 
+    private Connection con;
 
     public void insert(UnderWriter und) {
 
         try {
-            Connection con = ConnectDB.getConn();
+             con = ConnectDB.getConn();
             String query = "insert into underwriter(Id,Name,DOB,DOJ,Password) values(?,?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(query);
 
@@ -38,7 +39,7 @@ public class UnderWriterDao {
     public void search(UnderWriter uw) {
 
         try {
-            Connection con = ConnectDB.getConn();
+             con = ConnectDB.getConn();
 
             String query = "select * from underwriter where Id=?";
             PreparedStatement stmt = con.prepareStatement(query);
@@ -70,7 +71,7 @@ public class UnderWriterDao {
     public void delete(UnderWriter uw) {
 
         try{
-            Connection con=ConnectDB.getConn();
+             con=ConnectDB.getConn();
 
             String query="delete from underwriter where Id=?";
             PreparedStatement stmt=con.prepareStatement(query);
