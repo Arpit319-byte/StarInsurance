@@ -68,7 +68,26 @@ public class Main {
                             System.out.println("Search Underwriter by Id");
                             System.out.println("Enter the UnderWriter Id to be searched");
                             int uwId1=sc.nextInt();
-                            unwc.saerchUnderWriter(uwId1);
+                            unwc.searchUnderWriter(uwId1);
+                            break;
+
+                        case 3:
+                            System.out.println("Delete UnderWriter by Id");
+                            System.out.println("Enter the UnderWriter Id to be deleted");
+                            int uwId2=sc.nextInt();
+                            unwc.deleteUnderWriter(uwId2);
+                            break;
+
+                        case 4:
+                            System.out.println("Update UnderWriter password by Id");
+                            System.out.println("Enter the UnderWriter Id to be updated");
+                            int uwId3=sc.nextInt();
+                            System.out.println("Enter the old password");
+                            String password1=sc.nextLine();
+                            System.out.println("Enter the new password");
+                            String password2=sc.nextLine();
+                       //     unwc.updateUnderWriter(uwId3,password1,password2);
+                            break;
 
                     }
 

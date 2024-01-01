@@ -20,5 +20,27 @@ public class UnderWriterController {
         System.out.println("UnderWriter Registered Successfully in controller");
     }
 
+    public void searchUnderWriter(int uwId){
+        UnderWriter underWriter =new UnderWriter();
+        underWriter.setUwId(uwId);
+
+        try {
+            und.search(underWriter);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteUnderWriter(int uwId){
+        UnderWriter underWriter =new UnderWriter();
+        underWriter.setUwId(uwId);
+
+        try {
+            und.delete(underWriter);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
