@@ -82,23 +82,34 @@ public class Main {
                             System.out.println("Update UnderWriter password by Id");
                             System.out.println("Enter the UnderWriter Id to be updated");
                             int uwId3=sc.nextInt();
+                            sc.nextLine();
                             System.out.println("Enter the old password");
                             String password1=sc.nextLine();
                             System.out.println("Enter the new password");
                             String password2=sc.nextLine();
-                       //     unwc.updateUnderWriter(uwId3,password1,password2);
+                            unwc.updateUnderWriter(uwId3,password1,password2);
                             break;
 
+                        case 5:
+                            System.out.println("View all registered UnderWriter");
+                            unwc.viewAllUnderWriter();
+                            break;
                     }
 
 
+
                 } else {
-                    System.out.println("Invalid credentials");
+                    System.out.println("Invalid Admin Id or Password");
                     break;
                 }
                 break;
 
             case 2:
+                System.out.println("Enter the UnderWriter Id");
+                int uwId=sc.nextInt();
+                System.out.println("Enter the UnderWriter password");
+
+
 
         }
 

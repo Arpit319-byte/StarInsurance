@@ -42,5 +42,27 @@ public class UnderWriterController {
         }
     }
 
+    public void updateUnderWriter(int uwId,String pass1,String pass2){
+        UnderWriter underWriter=new UnderWriter();
+        underWriter.setUwId(uwId);
+        underWriter.setPassword(pass1);
+
+        try{
+            und.update(underWriter,pass2);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void viewAllUnderWriter(){
+
+        try{
+            und.viewAll();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 }

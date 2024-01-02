@@ -29,7 +29,7 @@ public class UnderWriterDao {
             else
                 System.out.println("UnderWriter Registration Failed");
 
-            stmt.close();
+            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,9 +54,10 @@ public class UnderWriterDao {
                     System.out.println("DOB: " + rs.getString(3));
                     System.out.println("DOJ: " + rs.getString(4));
                     System.out.println("Password: " + rs.getString(5));
+                    System.out.println("------------------------------------------------");
                 }
 
-                stmt.close();
+                con.close();
 
             } else {
                 System.out.println("UnderWriter not found");
@@ -83,6 +84,59 @@ public class UnderWriterDao {
                 System.out.println("UnderWriter Deleted Successfully");
             else
                 System.out.println("UnderWriter Deletion Failed");
+
+            con.close();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void update(UnderWriter uw,String password2){
+
+        try {
+            con = ConnectDB.getConn();
+            String query = "update underwriter set password=? where ID=? and password=?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1,password2);
+            stmt.setInt(2,uw.getUwId());
+            stmt.setString(3,uw.getPassword());
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if(rowsAffected>0)
+                System.out.println("UnderWriter Password Updated Successfully");
+            else
+                System.out.println("UnderWriter Password Updation Failed");
+
+            con.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void viewAll(){
+
+        try {
+            con = ConnectDB.getConn();
+            String query = "select * from underwriter";
+            PreparedStatement stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs!=null){
+
+                while(rs.next()){
+                    System.out.println("Id: " + rs.getInt(1));
+                    System.out.println("Name: " + rs.getString(2));
+                    System.out.println("DOB: " + rs.getString(3));
+                    System.out.println("DOJ: " + rs.getString(4));
+                    System.out.println("Password: " + rs.getString(5));
+                }
+
+                con.close();
+            }else{
+                System.out.println("No UnderWriter found");
+            }
 
         }catch(Exception e){
             e.printStackTrace();
