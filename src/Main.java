@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UnderWriterController unwc=new UnderWriterController();
+        UnderWriterController unwc = new UnderWriterController();
         Scanner sc = new Scanner(System.in);
 
         int adminId = 1234;
@@ -67,27 +67,27 @@ public class Main {
                         case 2:
                             System.out.println("Search Underwriter by Id");
                             System.out.println("Enter the UnderWriter Id to be searched");
-                            int uwId1=sc.nextInt();
+                            int uwId1 = sc.nextInt();
                             unwc.searchUnderWriter(uwId1);
                             break;
 
                         case 3:
                             System.out.println("Delete UnderWriter by Id");
                             System.out.println("Enter the UnderWriter Id to be deleted");
-                            int uwId2=sc.nextInt();
+                            int uwId2 = sc.nextInt();
                             unwc.deleteUnderWriter(uwId2);
                             break;
 
                         case 4:
                             System.out.println("Update UnderWriter password by Id");
                             System.out.println("Enter the UnderWriter Id to be updated");
-                            int uwId3=sc.nextInt();
+                            int uwId3 = sc.nextInt();
                             sc.nextLine();
                             System.out.println("Enter the old password");
-                            String password1=sc.nextLine();
+                            String password1 = sc.nextLine();
                             System.out.println("Enter the new password");
-                            String password2=sc.nextLine();
-                            unwc.updateUnderWriter(uwId3,password1,password2);
+                            String password2 = sc.nextLine();
+                            unwc.updateUnderWriter(uwId3, password1, password2);
                             break;
 
                         case 5:
@@ -95,7 +95,6 @@ public class Main {
                             unwc.viewAllUnderWriter();
                             break;
                     }
-
 
 
                 } else {
@@ -106,9 +105,28 @@ public class Main {
 
             case 2:
                 System.out.println("Enter the UnderWriter Id");
-                int uwId=sc.nextInt();
+                int uwId = sc.nextInt();
                 System.out.println("Enter the UnderWriter password");
+                String password = sc.next();
 
+                boolean a=unwc.validate(uwId,password);
+
+                if(a){
+
+                    System.out.println("Press 1 to create new vehicle insurance policy");
+                    System.out.println("Press 2 to renew vehicle insurance policy");
+                    System.out.println("Press 3 to change vehicle insurance policy type");
+                    System.out.println("Press 4 to view all vehicle insurance policy");
+                    int ch=sc.nextInt();
+
+
+
+
+
+                }else{
+                    System.out.println("Invalid UnderWriter Id or Password");
+                }
+                break;
 
 
         }

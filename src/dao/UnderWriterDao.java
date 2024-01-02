@@ -13,7 +13,7 @@ public class UnderWriterDao {
     public void insert(UnderWriter und) {
 
         try {
-             con = ConnectDB.getConn();
+            con = ConnectDB.getConn();
             String query = "insert into underwriter(Id,Name,DOB,DOJ,Password) values(?,?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(query);
 
@@ -39,7 +39,7 @@ public class UnderWriterDao {
     public void search(UnderWriter uw) {
 
         try {
-             con = ConnectDB.getConn();
+            con = ConnectDB.getConn();
 
             String query = "select * from underwriter where Id=?";
             PreparedStatement stmt = con.prepareStatement(query);
@@ -71,14 +71,14 @@ public class UnderWriterDao {
 
     public void delete(UnderWriter uw) {
 
-        try{
-             con=ConnectDB.getConn();
+        try {
+            con = ConnectDB.getConn();
 
-            String query="delete from underwriter where Id=?";
-            PreparedStatement stmt=con.prepareStatement(query);
-            stmt.setInt(1,uw.getUwId());
+            String query = "delete from underwriter where Id=?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, uw.getUwId());
 
-            int rowsAffected=stmt.executeUpdate();
+            int rowsAffected = stmt.executeUpdate();
 
             if (rowsAffected > 0)
                 System.out.println("UnderWriter Deleted Successfully");
@@ -87,35 +87,35 @@ public class UnderWriterDao {
 
             con.close();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void update(UnderWriter uw,String password2){
+    public void update(UnderWriter uw, String password2) {
 
         try {
             con = ConnectDB.getConn();
             String query = "update underwriter set password=? where ID=? and password=?";
             PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1,password2);
-            stmt.setInt(2,uw.getUwId());
-            stmt.setString(3,uw.getPassword());
+            stmt.setString(1, password2);
+            stmt.setInt(2, uw.getUwId());
+            stmt.setString(3, uw.getPassword());
 
             int rowsAffected = stmt.executeUpdate();
 
-            if(rowsAffected>0)
+            if (rowsAffected > 0)
                 System.out.println("UnderWriter Password Updated Successfully");
             else
                 System.out.println("UnderWriter Password Updation Failed");
 
             con.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void viewAll(){
+    public void viewAll() {
 
         try {
             con = ConnectDB.getConn();
@@ -123,9 +123,9 @@ public class UnderWriterDao {
             PreparedStatement stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
-            if(rs!=null){
+            if (rs != null) {
 
-                while(rs.next()){
+                while (rs.next()) {
                     System.out.println("Id: " + rs.getInt(1));
                     System.out.println("Name: " + rs.getString(2));
                     System.out.println("DOB: " + rs.getString(3));
@@ -134,12 +134,31 @@ public class UnderWriterDao {
                 }
 
                 con.close();
-            }else{
+            } else {
                 System.out.println("No UnderWriter found");
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean validateUnderWriter(int id, String password) {
+        boolean ans = false;
+        try {
+            con = ConnectDB.getConn();
+            String query = "select * from underwriter where Id=? and Password=?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                ans = true;
+            }
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ans;
     }
 }
