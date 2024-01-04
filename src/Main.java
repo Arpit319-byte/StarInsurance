@@ -1,4 +1,5 @@
 import controller.UnderWriterController;
+import controller.VehicleController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UnderWriterController unwc = new UnderWriterController();
+        VehicleController vc = new VehicleController();
         Scanner sc = new Scanner(System.in);
 
         int adminId = 1234;
@@ -109,21 +111,59 @@ public class Main {
                 System.out.println("Enter the UnderWriter password");
                 String password = sc.next();
 
-                boolean a=unwc.validate(uwId,password);
+                boolean a = unwc.validate(uwId, password);
 
-                if(a){
+                if (a) {
 
                     System.out.println("Press 1 to create new vehicle insurance policy");
                     System.out.println("Press 2 to renew vehicle insurance policy");
                     System.out.println("Press 3 to change vehicle insurance policy type");
                     System.out.println("Press 4 to view all vehicle insurance policy");
-                    int ch=sc.nextInt();
+                    int ch = sc.nextInt();
+
+                    switch (ch) {
+                        case 1:
+
+                            System.out.println("Enter the vehicle number");
+                            int vno = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Enter the vehicle type");
+                            String vtype = sc.nextLine();
+                            System.out.println("Enter the customer name");
+                            String cname = sc.nextLine();
+                            System.out.println("Enter the engine number");
+                            int engno = sc.nextInt();
+                            System.out.println("Enter the chasis number");
+                            int chno = sc.nextInt();
+                            System.out.println("Enter the phone number");
+                            long phno = sc.nextLong();
+                            sc.nextLine();
+                            System.out.println("Enter the insurance type");
+                            String itype = sc.nextLine();
+                            System.out.println("Enter the premium amount");
+                            int preamo = sc.nextInt();
+                            sc.nextLine();
+                            System.out.println("Enter the from date");
+                            String fd = sc.nextLine();
+                            System.out.println("Enter the to date");
+                            String td = sc.nextLine();
+                            System.out.println("Enter the UnderWriter Id");
+                            int uid = sc.nextInt();
+                            vc.register( vno, vtype, cname, engno, chno, phno, itype, preamo, fd, td, uid);
+                            break;
+
+                        case 2:
+                            System.out.println("Enter the policy number");
+                            int pno1 = sc.nextInt();
+                            System.out.println("Enter the premimum amount");
+                            int preamo1 = sc.nextInt();
 
 
 
+                    }
 
 
-                }else{
+                } else {
                     System.out.println("Invalid UnderWriter Id or Password");
                 }
                 break;

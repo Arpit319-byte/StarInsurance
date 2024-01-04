@@ -3,7 +3,7 @@ package model;
 public class Vehicle {
 
     int pno;
-    String vno;
+    int vno;
     String vtype;
     String cname;
     int engno;
@@ -18,7 +18,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle( String vno, String vtype, String cname, int engno, int chno, long phno, String itype, int preamo, String fd, String td, int uid) {
+    public Vehicle( int  vno, String vtype, String cname, int engno, int chno, long phno, String itype, int preamo, String fd, String td, int uid) {
         this.vno = vno;
         this.vtype = vtype;
         this.cname = cname;
@@ -38,11 +38,11 @@ public class Vehicle {
 
 
 
-    public String getVno() {
+    public int getVno() {
         return vno;
     }
 
-    public void setVno(String vno) {
+    public void setVno(int vno) {
         this.vno = vno;
     }
 
@@ -119,7 +119,9 @@ public class Vehicle {
     }
 
 
-
+    public int getUid() {
+        return uid;
+    }
     public void setUid(int uid) {
         this.uid = uid;
     }
