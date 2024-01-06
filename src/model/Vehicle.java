@@ -18,7 +18,7 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle( int  vno, String vtype, String cname, int engno, int chno, long phno, String itype, int preamo, String fd, String td, int uid) {
+    public Vehicle(int vno, String vtype, String cname, int engno, int chno, long phno, String itype, int preamo, String fd, String td, int uid) {
         this.vno = vno;
         this.vtype = vtype;
         this.cname = cname;
@@ -36,6 +36,9 @@ public class Vehicle {
         return pno;
     }
 
+    public void setPno(int pno) {
+        this.pno = pno;
+    }
 
 
     public int getVno() {
@@ -122,6 +125,7 @@ public class Vehicle {
     public int getUid() {
         return uid;
     }
+
     public void setUid(int uid) {
         this.uid = uid;
     }

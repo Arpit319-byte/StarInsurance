@@ -64,11 +64,11 @@ public class UnderWriterController {
 
     }
 
-    public boolean validate(int uwId ,String password){
-        boolean ans=false;
-        try{
-            ans= und.validateUnderWriter(uwId,password);
-        }catch(Exception e){
+    public boolean validate(int uwId, String password) {
+        boolean ans = false;
+        try {
+            ans = und.validateUnderWriter(uwId, password);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

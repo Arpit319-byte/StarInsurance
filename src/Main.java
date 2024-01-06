@@ -155,10 +155,21 @@ public class Main {
                         case 2:
                             System.out.println("Enter the policy number");
                             int pno1 = sc.nextInt();
-                            System.out.println("Enter the premimum amount");
+                            System.out.println("Enter the premium amount");
                             int preamo1 = sc.nextInt();
+                            vc.renewPolicy(pno1, preamo1);
+                            break;
 
+                        case 3:
+                            System.out.println("Enter the Policy Id ");
+                            int pno = sc.nextInt();
+                            vc.changeType(pno);
+                            break;
 
+                        case 4:
+                            System.out.println("Enter the UnderWriter Id");
+                            int uid1 = sc.nextInt();
+                            vc.viewAll(uid1);
 
                     }
 
